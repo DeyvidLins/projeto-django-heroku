@@ -1,0 +1,42 @@
+body {
+  background-color:#fff;
+  -webkit-font-smoothing: antialiased;
+  background-image: url('/static/image/fundo-page.jpg');
+  background-attachment: fixed;
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+}
+
+.form-login {
+    background-color: #CDC9C9;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 6px;
+
+}
+
+h4 {
+ border:0 solid #fff;
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.img {
+ text-align: center;
+}
+
+.alinhhamento {
+  text-align: center;
+}
+
+a {
+    text-align: right;
+}

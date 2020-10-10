@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>D&D-Educacional</title>
+
+</head>
+<body>
+<div style="text-align: left;">
+    <p>Avenida Brasil, 532 - Jaboatão-PE - CEP: 40285-460 </p>
+    <p>Cnpj : 77.865.203/0001-75 Fone:(81)3434-3434</p>
+</div>
+<div style="text-align: right">
+    <img src="\Users\Deyvid\Desktop\Project_version02\academic\static\academic\image\img.png" width="150" height="100">
+</div><br>
+
+<h1 style=" text-align: center; font-size:30px; ">Histórico Escolar</h1>
+
+<div style="text-align: center;">
+    <table style="border: 1px solid black; font-size:15px; " class="table">
+
+        <thead class="thead-dark">
+        <tr style="background-color: #AFEEEE;">
+            <th scope="col">Nome da disciplina</th>
+            <th scope="col">Carga Horária</th>
+            <th scope="col">Frenquência</th>
+            <th scope="col">Notas</th>
+
+        </tr>
+        </thead>
+        {% for sit in situacao %}
+        <tbody>
+        <tr>
+
+            <td style="text-align: center;">{{sit.id_disciplina.nome}}</td>
+            <td style="text-align: center;">{{sit.id_disciplina.carga_horaria}}</td>
+            <td style="text-align: center;">{{sit.frequencia}}</td>
+            <td style="text-align: center;">{{sit.nota}}</td>
+
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

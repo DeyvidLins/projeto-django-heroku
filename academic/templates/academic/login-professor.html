@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<link rel="shortcut icon" href="/static/image/img.png" />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap Core CSS -->
+  <link href="/static/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="/static/css/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="/static/css/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="/static/css/css/stylish-portfolio.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/login-professor.css">
+
+    <title>D%D-Educacional</title>
+
+</head>
+ <body class="d-flex flex-column" >
+     <a href="/home/"><img src="/static/image/voltar.png" width="30" height="30"/></a>
+<div class="img">
+    <img src="/static/image/img.png" width="150" height="100"> <br>
+</div>
+<div class="alinhhamento">
+    <div class="form-login">
+        <h4>D&D-Educacional</h4>
+        <form action="submit" method="POST">{% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Usuário" name="username">
+            </div>
+            <div class="form-group">
+
+                <input type="password" class="form-control" placeholder="Senha" name="password">
+            </div>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            <button type="submit" class="btn btn-info">Login</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

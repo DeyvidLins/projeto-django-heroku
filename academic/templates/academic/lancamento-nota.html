@@ -1,0 +1,53 @@
+{% include "disciplinas.html" %}
+
+<div class="container">
+
+
+    <form action="/nota-delete/" method="POST">{% csrf_token %}
+        <input type="hidden" class="form-control" value="{{cpf_prof}}" name="prof">
+        <input type="hidden" class="form-control" value="{{id_disc}}" name="id_disc">
+        <table class="table">
+  <thead class="thead-dark">
+
+                <tr>
+                    <th>CPF</th>
+                    <th scope="col">Nome do Aluno</th>
+                    <th scope="col">Notas</th>
+                    <th scope="col">Frequência</th>
+
+                </tr>
+                </thead>
+
+
+                {% for s in sit%}
+                <tbody>
+                <tr>
+
+                    <td scope="row"><input  style="border: 1px solid #ffffff; width:70px" type="text" name="cpf"
+                                           value="{{s.cpf.cpf}}"
+                                           readonly></td>
+                    <td scope="row"><input  style="border: 1px solid #ffffff;" type="text"
+                                           value="{{s.cpf.nome}}" readonly></td>
+                    <td scope="row" ><input  style="border: 1px solid #ffffff; width:60px;" type="text" name="nota"
+                                           value="{{s.nota}}"
+                                           readonly></td>
+                    <td scope="row" ><input  style="border: 1px solid #ffffff;width:60px;" type="text" name="freq"
+                                           value="{{s.frequencia}}"
+                                           readonly></td>
+
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        <div style="text-align: right;">
+            <td>
+                <button type="submit" class="btn btn-info">Deletar notas e faltas</button>
+            </td>
+        </div>
+        <br>
+    </form>
+
+
+</div>

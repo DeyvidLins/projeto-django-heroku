@@ -1,0 +1,45 @@
+{% include "disciplinas.html" %}
+
+<div class="container">
+
+
+    <form  action="/delete/" method="POST">{% csrf_token %}
+        <input type="hidden" class="form-control" value="{{id_disc}}" name="id_disc">
+    <input type="hidden" class="form-control" value="{{cpf_prof}}" name="prof">
+            <table class="table">
+  <thead class="thead-dark">
+            <tr>
+                <th>CPF</th>
+                <th scope="col">Nome do Aluno</th>
+                <th scope="col">Notas</th>
+                <th scope="col">Frequência</th>
+                <th></th>
+
+            </tr>
+            </thead>
+
+
+{% for s in sit%}
+             <tbody>
+            <tr>
+
+                <td scope="row"><input  style="border: 1px solid #ffffff; width:70px" type="text" name="cpf" value="{{s.cpf.cpf}}"
+                                       readonly></td>
+                <td scope="row"><input style="border: 1px solid #ffffff;" type="text" value="{{s.cpf.nome}}" readonly></td>
+                <td scope="row"><input style="border: 1px solid #ffffff; width:35px;" type="text" name="nota" value="{{s.nota}}"
+                                       readonly></td>
+                <td scope="row" ><input style="border: 1px solid #ffffff; width:35px;" type="text" name="freq" value="{{s.frequencia}}"
+                                       readonly></td>
+                <td><button type="submit" class="btn btn-danger">Apagar</button></td>
+            </tr>
+{% endfor %}
+        </tbody>
+            </table>
+
+
+    </form>
+ <div style="text-align: left;">
+     <a href="/lancamento-nota/{{id_disc}}/{{cpf_prof}}/">Voltar</a>
+ </div>
+
+</div>

@@ -1,0 +1,43 @@
+body {
+  background-color:#fff;
+  -webkit-font-smoothing: antialiased;
+  font: normal 14px Roboto,arial,sans-serif;
+  background-image: url('/static/image/fundo-page.jpg');
+  background-attachment: fixed;
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+}
+
+
+body,
+.menu,
+.sub-menu {
+    margin: 0;
+    padding: 0;
+}
+
+.menu,
+.sub-menu {
+    list-style: none;
+    background:	#AFEEEE;
+}
+
+.menu a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    color:#1a1a1a;
+    font-family: sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.menu > li {
+    float: left;
+}
+
+
+
+

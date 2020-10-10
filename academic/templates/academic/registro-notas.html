@@ -1,0 +1,38 @@
+ {% block content %}
+<html lang="pt-br">
+<link rel="shortcut icon" href="/static/image/img.png" />
+<head>
+    <title>D&D-Educacional</title>
+
+    <!-- Bootstrap Core CSS -->
+  <link href="/static/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="/static/css/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="/static/css/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="/static/css/css/stylish-portfolio.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/portal-professor.css"/>
+</head>
+<img src="/static/image/img.png" width="150" height="120">
+
+<div class="menu-container">
+
+    <ul class="menu clearfix">
+
+        <a class="image-right" href="/portal-professor/{{cpf_prof}}/"><img src="/static/image/voltar.png" width="20"
+                                                              height="20"/></a>
+    </ul>
+
+</div><br>
+<body>
+
+{% include "turmas.html" %}
+
+
+
+</body>
+</html>
+ {% endblock %}

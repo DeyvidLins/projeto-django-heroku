@@ -1,0 +1,19 @@
+{% include "registro-notas.html" %}
+
+<div class="form">
+
+    <form action="/listar-alunos/" method="POST">{% csrf_token %}
+        <input type="hidden" class="form-control" value="{{cpf_prof}}" name="prof">
+        <input type="hidden" class="form-control" value="{{disci}}" name="id_disc">
+        <label class="texto">Turma:</label>
+        <select id="turmas" name="cod_turma">
+            {% for d in disc%}
+
+            <option value="{{d.cod_turma.cod_turma}}">{{d.cod_turma.nome}}</option>
+
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-info">Selecionar</button>
+    </form>
+
+</div><br>

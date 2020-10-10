@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<link rel="shortcut icon" href="/static/image/img.png" />
+<head>
+    <title>D&D-Educacional</title>
+
+    <!-- Bootstrap Core CSS -->
+  <link href="/static/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="/static/css/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="/static/css/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="/static/css/css/stylish-portfolio.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/portal-aluno.css"/>
+</head>
+<body>
+
+<img src="/static/image/img.png" width="150" height="120">
+
+ <div class="menu-container">
+
+    <ul class="menu clearfix">
+           <a class="image-right" href="/portal-aluno/{{user}}/"><img src="/static/image/voltar.png" width="20" height="20"/></a>
+    </ul>
+
+</div> <br>
+<div class="container">
+    <form action="/boletim/" method="POST">{% csrf_token %}
+          <table class="table">
+  <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome da disciplina</th>
+                <th scope="col">Carga Horária</th>
+                <th scope="col">Frequência</th>
+                <th scope="col">Notas</th>
+
+            </tr>
+            </thead>
+
+            {% for sit in situacao %}
+
+            <tbody>
+            <tr>
+                <td scope="row">{{sit.id_disciplina.nome}}</td>
+                <td scope="row">{{sit.id_disciplina.carga_horaria}}</td>
+                <td scope="row">{{sit.frequencia}}</td>
+                <td scope="row">{{sit.nota}}</td>
+
+            </tr>
+
+            {% endfor %}
+        </tbody>
+                  </table>
+        <button type="submit" class="btn btn-info">Gerar boletim</button>
+        <input type="hidden"  class="form-control" value="{{situ.cpf.cpf}}" name="name">
+    </form>
+</div>
+</body>
+</html>
+
+

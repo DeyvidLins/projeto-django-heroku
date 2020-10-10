@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<link rel="shortcut icon" href="/static/image/img.png" />
+<head>
+    <title>D&D-Educacional</title>
+     <!-- Bootstrap Core CSS -->
+  <link href="/static/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="/static/css/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="/static/css/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="/static/css/css/stylish-portfolio.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/portal-professor.css"/>
+</head>
+<body>
+<img src="/static/image/img.png" width="150" height="120">
+<div id="form">
+<form action="/registro-notas/"  method="POST">{% csrf_token %}
+     <div class="menu-container">
+    <ul class="menu clearfix">
+        <li><button type="submit" class="btn btn-info">Consultar notas e Frequência</button></li>
+        <a class="image-right" href="/login-professor/"><img src="/static/image/exit.png" width="15" height="15"/></a>
+    </ul>
+</div>
+        <div class="container-al">
+            <p>
+                {% for p in prof %}
+
+                <label id="label-principal">Dados Pessoais:</label>
+               <label class="texto">CPF: <input type="text" class="dados-aluno" placeholder="Usuário" name="prof" value="{{p.cpf_professor}}" readonly></label></label><br>
+                <label class="texto">Nome: <label class="dados-aluno">{{p.nome}}</label></label><br>
+                <label class="texto">E-mail: <label class="dados-aluno">{{p.user.email}}</label></label><br>
+            </p>
+            {% endfor %}
+
+        </div>
+    </form>
+</div>
+<!--
+<div id="image">
+    <img src="/static/fundo-page.jpg" width="100%" height="100%">
+</div>-->
+</body>
+</html>
+

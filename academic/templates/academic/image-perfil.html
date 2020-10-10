@@ -1,0 +1,13 @@
+{% include "portal-aluno.html" %}
+<div class="form">
+
+    <form enctype="multipart/form-data" action="/image-perfil/" method="POST">{% csrf_token %}
+         <input type="hidden" class="form-control" value="{{user}}" name="user">
+         <input type="hidden" class="dados-aluno"  name="cpf" value="{{user}}" >
+          <input type="file" name="photo" accept="image/*" id="id_foto">
+
+
+         <button type="submit" class="btn btn-info">Salvar foto</button>
+    </form>
+
+</div>
