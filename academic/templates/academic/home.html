@@ -1,3 +1,4 @@
+{% load static %}
 <html>
 <link rel="shortcut icon" href="/static/image/img.png" />
 <head>
@@ -7,14 +8,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="{% static "css/home.css" %}">
 
 </head>
 <body>
 <div class="menu-container">
     <ul class="menu clearfix">
-        <li><a href="/login-aluno/"><img src="/image/aluno.png" width="15" height="15">Aluno</a>
-        <li><a href="/login-professor/"><img src="/image/professor.png" width="15" height="15">Professor</a>
+        <li><a href="/login-aluno/"><img src='{% static "image/aluno.png" %}' width="15" height="15" >Aluno</a>
+        <li><a href="/login-professor/"><img src= '{% static "image/professor.png" %}' width="15" height="15" >Professor</a>
     </ul>
 
 
