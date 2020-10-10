@@ -6,6 +6,15 @@ from django.contrib.auth.decorators import login_required
 from .models import Aluno, Situacao_aluno, Professor, Disciplina
 from .utils import render_to_pdf
 
+
+def inicio(request):  # Inicia na página principal
+    return render(request, 'home.html')
+
+
+def login_user_aluno(request):
+    return render(request, 'login-aluno.html')
+
+
 def logout_user(request):  # Volta para a pagina principal home.html
     logout(request)
     return redirect('/home/')
@@ -27,15 +36,6 @@ def image_perfil(request):
         alunos = Aluno.objects.all().filter(cpf=cpf_aluno)
         return render(request, 'image-perfil.html', {'alunos': alunos})
 
-
-
-def inicio(request):  # Inicia na página principal
-    return render(request, 'home.html')
-
-
-@login_required(login_url='/login-aluno/')
-def login_user_aluno(request):  # Página login-aluno.html
-    return render(request, 'login-aluno.html')
 
 
 @login_required(login_url='/login-aluno/')
