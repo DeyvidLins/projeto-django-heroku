@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p^x*wy@84yv9)hv-%t$9fzzwfh-tjjt*&=4&_qi%(eg7dy7ido'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =  False
+DEBUG = True
 
 ALLOWED_HOSTS = ["https://webacademic.herokuapp.com", ".herokuapp.com"]
 
