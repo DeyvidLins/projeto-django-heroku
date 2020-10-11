@@ -25,12 +25,12 @@
 
                 <td scope="row"><input  style="border: 1px solid #ffffff; width:70px" type="text" name="cpf" value="{{s.cpf.cpf}}"
                                        readonly></td>
-                <td scope="row"><input style="border: 1px solid #ffffff;" type="text" value="{{s.cpf.nome}}" readonly></td>
+                <td scope="row"><input style="border: 1px solid #ffffff;" type="text" name="nome" value="{{s.cpf.nome}}" readonly></td>
                 <td scope="row"><input style="border: 1px solid #ffffff; width:35px;" type="text" name="nota" value="{{s.nota}}"
                                        readonly></td>
                 <td scope="row" ><input style="border: 1px solid #ffffff; width:35px;" type="text" name="freq" value="{{s.frequencia}}"
                                        readonly></td>
-                <td><button type="submit" class="btn btn-danger">Apagar</button></td>
+                <td><button type="submit" class="btn btn-danger">Excluir</button></td>
             </tr>
 {% endfor %}
         </tbody>
@@ -38,6 +38,9 @@
 
 
     </form>
+     {% if msg %}
+   <div class="alert alert-danger">{{msg}}</div>
+   {% endif %}
  <div style="text-align: left;">
      <a href="/lancamento-nota/{{id_disc}}/{{cpf_prof}}/">Voltar</a>
  </div>

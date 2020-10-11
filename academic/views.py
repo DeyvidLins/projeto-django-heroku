@@ -171,12 +171,17 @@ def delete(request):
     if request.POST:
         cpf_prof = request.POST.get('prof')
         id_disc = request.POST.get('id_disc')
+        nome = request.POST.get('nome')
         cpf_aluno = request.POST.get('cpf')
+      
         aluno_sit = Situacao_aluno.objects.get(cpf=cpf_aluno)
         aluno_sit.delete()
+
         disc = Disciplina.objects.all()
         sit = Situacao_aluno.objects.all()
-        return render(request, 'delete-notas.html', {"sit": sit, "disc": disc, "id_disc":id_disc,"cpf_prof": cpf_prof})
+        msg = (f'Notas e faltas deletadas do aluno {nome}')
+     
+        return render(request, 'delete-notas.html', {"sit": sit, "disc": disc, "id_disc":id_disc,"cpf_prof": cpf_prof,"msg": msg})
 
 def notas_update(request):
     if request.POST:
@@ -190,7 +195,6 @@ def update (request):
     if request.POST:
         cpf_prof = request.POST.get('prof')
         id_disc = request.POST.get('id_disc')
-        print(id_disc)
         cpf_aluno = request.POST.getlist('cpf')
         nota = request.POST.getlist('nota')
         freq = request.POST.getlist('freq')
@@ -204,7 +208,8 @@ def update (request):
 
         disc = Disciplina.objects.all()
         sit = Situacao_aluno.objects.all()
-        return render(request, 'update-notas.html', {"sit": sit, "disc": disc,"id_disc": id_disc,"cpf_prof": cpf_prof})
+        msg = ('Notas atualizadas com Sucesso!')
+        return render(request, 'update-notas.html', {"sit": sit, "disc": disc,"id_disc": id_disc,"cpf_prof": cpf_prof, "msg": msg})
 
 
 

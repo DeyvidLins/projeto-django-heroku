@@ -26,8 +26,8 @@
                 <td scope="row"><input  style="border: 1px solid #ffffff;width:70px" type="text" name="cpf" value="{{s.cpf.cpf}}"
                                        readonly></td>
                 <td scope="row"><input  style="border: 1px solid #ffffff;" type="text" value="{{s.cpf.nome}}" readonly></td>
-                <td scope="row" style="width:60px;"><input  style="border: 1px solid #ffffff; width:35px;" type="text"  name="nota" value="{{s.nota}}"></td>
-                <td scope="row" style="width:60px;"><input  style="border: 1px solid #ffffff; width:35px;" type="text" name="freq" value="{{s.frequencia}}" ></td>
+                <td scope="row" ><input  style="border: 1px solid #ffffff; width:50px;" type="number" step="0.01" name="nota"  value="{{s.nota}}"></td>
+                <td scope="row" ><input  style="border: 1px solid #ffffff; width:40px;" type="number" name="freq" value="{{s.frequencia}}" ></td>
 
             </tr>
 {% endfor %}
@@ -38,6 +38,10 @@
           <button type="submit" class="btn btn-info" >Atualizar</button>
             </div>
     </form>
+
+{% if msg %}
+<div class="alert alert-success" role="alert">{{msg}}</div>
+{% endif %}
 
  <div style="text-align: left;">
      <a href="/lancamento-nota/{{id_disc}}/{{cpf_prof}}/">Voltar</a>

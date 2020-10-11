@@ -66,6 +66,8 @@ class Aluno(models.Model):
 class Situacao_aluno(models.Model):
     id_disciplina = models.ForeignKey(Disciplina,on_delete=models.CASCADE)
     cpf = models.ForeignKey(Aluno,on_delete=models.CASCADE)
-    nota = models.FloatField(null=True)
+    nota = models.CharField(max_length=4, null=True)
     frequencia = models.IntegerField(null=True)
 
+    def __str__(self):
+       return str(self.id_disciplina)
