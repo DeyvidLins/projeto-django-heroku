@@ -135,20 +135,29 @@ def lista_alunos(request):  # lista os alunos cadastrados da turmas para lançam
 @login_required(login_url='/login-professor/')
 def lancamento(request):  # Insere as notas e faltas no banco de dados
     if request.GET:
-        cpf_prof = request.GET.get('prof')
-        id_disc = request.GET.get('id_disc')
-        disciplina = Disciplina.objects.get(id_disciplina=id_disc)  # Chave estrangeira de situacao_aluno
-        cpf_aluno = request.GET.getlist('cpf')
-        nota = request.GET.getlist('nota')
-        freq = request.GET.getlist('freq')
-        cont = 0
-        for cpf in cpf_aluno:
-            aluno = Aluno.objects.get(cpf=cpf)
-            Situacao_aluno.objects.create(id_disciplina=disciplina, cpf=aluno, nota=nota[cont], frequencia=freq[cont])
-            cont += 1
-      #  import pdb; pdb.set_trace()  #  Depurador
-        url = (f'/lancamento-nota/{id_disc}/{cpf_prof}/')
-    return redirect(url)  # enviando um id com a url
+        if request.GET:
+            cpf_prof = request.GET.get('prof')
+            id_disc = request.GET.get('id_disc')
+            disciplina = Disciplina.objects.get(id_disciplina=id_disc)  # Chave estrangeira de situacao_aluno
+            cpf_aluno = request.GET.getlist('cpf')
+            nota = request.GET.getlist('nota')
+            freq = request.GET.getlist('freq')
+            cont = 0
+            for cpf in cpf_aluno:
+                aluno = Aluno.objects.get(cpf=cpf)
+                if Situacao_aluno.objects.filter(cpf=aluno).exists():
+                    sit = Situacao_aluno.objects.get(cpf=aluno)
+                    sit.nota = nota[cont]
+                    sit.freq = freq[cont]
+                    sit.save()
+
+                else:
+                   Situacao_aluno.objects.create(id_disciplina=disciplina, cpf=aluno, nota=nota[cont],
+                                              frequencia=freq[cont])
+                cont += 1
+            #  import pdb; pdb.set_trace()  #  Depurador
+            url = (f'/lancamento-nota/{id_disc}/{cpf_prof}/')
+        return redirect(url)  # enviando um id com a url
 
 
 @login_required(login_url='/login-professor/')

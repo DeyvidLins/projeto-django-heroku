@@ -60,7 +60,7 @@ class Aluno(models.Model):
     cpf_resp =  models.ForeignKey(Responsavel, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.nome)
+        return str(self.cpf)
 
 
 class Situacao_aluno(models.Model):
@@ -70,4 +70,4 @@ class Situacao_aluno(models.Model):
     frequencia = models.IntegerField(null=True)
 
     def __str__(self):
-       return str(self.id_disciplina)
+       return str(self.cpf)
