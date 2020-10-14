@@ -25,7 +25,7 @@ SECRET_KEY = 'p^x*wy@84yv9)hv-%t$9fzzwfh-tjjt*&=4&_qi%(eg7dy7ido'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://webacademic.herokuapp.com", ".herokuapp.com"]
+#ALLOWED_HOSTS = ["https://webacademic.herokuapp.com", ".herokuapp.com"]
 
 
 
@@ -128,7 +128,7 @@ USE_TZ = True
 MEDIA_ROOT = os.path.join(BASE_DIR, "academic/static/academic/image")
 MEDIA_URL = "/image/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'academic/static/academic')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'academic/static/academic')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
