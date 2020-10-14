@@ -29,7 +29,7 @@
 <form action="/registro-notas/"  method="POST">{% csrf_token %}
      <div class="menu-container">
     <ul class="menu clearfix">
-        <li><button type="submit" class="btn btn-info">Consultar notas e Frequência</button></li>
+        <li><button type="submit" class="btn btn-info">Registrar notas e Frequência</button></li>
         <a class="image-right" href="/login-professor/"><img src="/image/exit.png" width="15" height="15"/></a>
     </ul>
 </div>
@@ -37,7 +37,7 @@
             <p>
                 {% for p in prof %}
 
-                <label id="label-principal">Dados Pessoais:</label>
+               <label id="label-principal">Dados Pessoais:</label>
                <label class="texto">CPF: <input type="text" class="dados-aluno" placeholder="Usuário" name="prof" value="{{p.cpf_professor}}" readonly></label></label><br>
                 <label class="texto">Nome: <label class="dados-aluno">{{p.nome}}</label></label><br>
                 <label class="texto">E-mail: <label class="dados-aluno">{{p.user.email}}</label></label><br>
