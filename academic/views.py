@@ -58,7 +58,7 @@ def situacao_al(request):  # View situação perfil
         sit = []
         for i in situacao:
             sit.append(i)
-        return render(request, 'situacao-aluno.html', {"situacao": sit, "situ": i, "user": user})
+        return render(request, 'situacao-aluno.html', {"situacao": sit, "situ": sit, "user": user})
 
 
 @csrf_protect
@@ -130,8 +130,7 @@ def lista_alunos(request):  # lista os alunos cadastrados da turmas para lançam
         disc = Disciplina.objects.all().select_related("cod_turma", "cpf_professor").filter(id_disciplina=id_disc)
         al = Aluno.objects.all().select_related("cod_turma").filter(cod_turma=cod_turm)
         sit = Situacao_aluno.objects.all().select_related("cpf", "id_disciplina").filter(id_disciplina=id_disc)
-        return render(request, 'listar-alunos.html',
-                      {"al": al, "disc": disc, "disciplina": id_disc, "cpf_prof": cpf_prof, "sit": sit})
+        return render(request, 'listar-alunos.html',{"al": al, "disc": disc, "disciplina": id_disc, "cpf_prof": cpf_prof, "sit": sit})
 
 
 @login_required(login_url='/login-professor/')
