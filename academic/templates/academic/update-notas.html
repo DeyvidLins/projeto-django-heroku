@@ -19,12 +19,12 @@
 
 
 {% for s in sit%}
-
+                <input type="hidden" name="id" value="{{s.id}}" readonly>
              <tbody>
             <tr>
 
-                <td scope="row"><input  style="border: 1px solid #ffffff;width:70px" type="text" name="cpf" value="{{s.cpf.cpf}}"
-                                       readonly></td>
+                <td scope="row"><input  style="border: 1px solid #ffffff; width:100px" type="text" name="cpf"
+                                           value="{{s.cpf.cpf}}">
                 <td scope="row"><input  style="border: 1px solid #ffffff;" type="text" value="{{s.cpf.nome}}" readonly></td>
                 <td scope="row" ><input  style="border: 1px solid #ffffff; width:50px;" type="number" step="0.01" name="nota"  value="{{s.nota}}"></td>
                 <td scope="row" ><input  style="border: 1px solid #ffffff; width:40px;" type="number" name="freq" value="{{s.frequencia}}" ></td>

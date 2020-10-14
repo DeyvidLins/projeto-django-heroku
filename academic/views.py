@@ -145,14 +145,7 @@ def lancamento(request):  # Insere as notas e faltas no banco de dados
             cont = 0
             for cpf in cpf_aluno:
                 aluno = Aluno.objects.get(cpf=cpf)
-                if Situacao_aluno.objects.filter(cpf=aluno).exists():
-                    sit = Situacao_aluno.objects.get(cpf=aluno)
-                    sit.nota = nota[cont]
-                    sit.freq = freq[cont]
-                    sit.save()
-
-                else:
-                   Situacao_aluno.objects.create(id_disciplina=disciplina, cpf=aluno, nota=nota[cont],
+                Situacao_aluno.objects.create(id_disciplina=disciplina, cpf=aluno, nota=nota[cont],
                                               frequencia=freq[cont])
                 cont += 1
             #  import pdb; pdb.set_trace()  #  Depurador
@@ -172,22 +165,23 @@ def notas_delete(request):
       cpf_prof = request.POST.get('prof')
       id_disc =request.POST.get('id_disc')
       disc = Disciplina.objects.all()
-      sit = Situacao_aluno.objects.all()
+      sit = Situacao_aluno.objects.all().select_related("cpf", "id_disciplina").filter(id_disciplina=id_disc)
       return render(request, 'delete-notas.html', {"sit": sit, "disc": disc, "id_disc":id_disc,"cpf_prof": cpf_prof})
 
 
 def delete(request):
     if request.POST:
+        id_sit = request.POST.get('id')
         cpf_prof = request.POST.get('prof')
         id_disc = request.POST.get('id_disc')
         nome = request.POST.get('nome')
         cpf_aluno = request.POST.get('cpf')
       
-        aluno_sit = Situacao_aluno.objects.get(cpf=cpf_aluno)
+        aluno_sit = Situacao_aluno.objects.get(id=id_sit)
         aluno_sit.delete()
 
         disc = Disciplina.objects.all()
-        sit = Situacao_aluno.objects.all()
+        sit = Situacao_aluno.objects.all().select_related("cpf", "id_disciplina").filter(id_disciplina=id_disc)
         msg = (f'Notas e faltas deletadas do aluno {nome}')
      
         return render(request, 'delete-notas.html', {"sit": sit, "disc": disc, "id_disc":id_disc,"cpf_prof": cpf_prof,"msg": msg})
@@ -197,26 +191,29 @@ def notas_update(request):
         cpf_prof = request.POST.get('prof')
         id_disc = request.POST.get('id_disc')
         disc = Disciplina.objects.all()
-        sit = Situacao_aluno.objects.all()
+        sit = Situacao_aluno.objects.all().select_related("cpf", "id_disciplina").filter(id_disciplina=id_disc)
         return render(request, 'update-notas.html', {"sit": sit, "disc": disc, "id_disc": id_disc, "cpf_prof":cpf_prof})
 
 def update (request):
     if request.POST:
+        id_sit = request.POST.getlist('id')
         cpf_prof = request.POST.get('prof')
         id_disc = request.POST.get('id_disc')
         cpf_aluno = request.POST.getlist('cpf')
         nota = request.POST.getlist('nota')
         freq = request.POST.getlist('freq')
         cont = 0
-        for cpf in cpf_aluno:
-            aluno = Situacao_aluno.objects.get(cpf=cpf)
+        for id in id_sit:
+
+            aluno = Situacao_aluno.objects.get(id=id)
             aluno.nota = nota[cont]
             aluno.freq = freq[cont]
+
             aluno.save()
             cont += 1
 
         disc = Disciplina.objects.all()
-        sit = Situacao_aluno.objects.all()
+        sit = Situacao_aluno.objects.all().select_related("cpf", "id_disciplina").filter(id_disciplina=id_disc)
         msg = ('Notas atualizadas com Sucesso!')
         return render(request, 'update-notas.html', {"sit": sit, "disc": disc,"id_disc": id_disc,"cpf_prof": cpf_prof, "msg": msg})
 
