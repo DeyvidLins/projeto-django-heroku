@@ -6,6 +6,9 @@
     <form action="/lancamento/" method="GET">{% csrf_token %}
         <input type="hidden" class="form-control" value="{{cpf_prof}}" name="prof">
         <input type="hidden" class="form-control" value="{{disciplina}}" name="id_disc">
+        {% for s in sit%}
+          <input type="hidden" name="id" value="{{s.id}}" readonly>
+        {% endfor %}
           <table class="table">
   <thead class="thead-dark">
 
